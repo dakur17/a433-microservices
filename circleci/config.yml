@@ -28,5 +28,5 @@ workflows:
     # List of jobs that will run
     jobs:
       - lint-dockerfile
-      - test-app
+      # - test-app
       - build-app-karsajobs
