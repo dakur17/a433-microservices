@@ -20,3 +20,13 @@ jobs:
       - run: docker build -t docker.pkg.github.com/dakur17/a433-microservices/dakur17/karsajobs:latest .
           docker login docker.pkg.github.com -u $GITHUB_USERNAME -p $GITHUB_TOKEN
           docker push docker.pkg.github.com/dakur17/a433-microservices/dakur17/karsajobs:latest
+
+
+workflows:
+  # Name of workflow
+  lint-test-build-karsajobs:
+    # List of jobs that will run
+    jobs:
+      - lint-dockerfile
+      - test-app
+      - build-app-karsajobs
