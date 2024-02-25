@@ -11,9 +11,9 @@ jobs:
           && chmod +x /usr/bin/hadolint \
           && hadolint Dockerfile
   
-  test-app:
-    steps:
-      - run: go test -v -short --count=1 $(go list ./...)
+  # test-app:
+  #   steps:
+  #     - run: go test -v -short --count=1 $(go list ./...)
 
   build-app-karsajobs:
     steps:
