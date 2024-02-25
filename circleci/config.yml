@@ -1,0 +1,22 @@
+# CircleCI configuration file
+version: 2.1
+
+jobs:
+  lint-dockerfile:
+    docker:
+      - image: docker.pkg.github.com/dakur17/a433-microservices/dakur17/karsajobs:latest
+    steps:
+      - run: |
+          curl -sL -o /usr/bin/hadolint "https://github.com/hadolint/hadolint/releases/latest/download/hadolint-Linux-x86_64" \
+          && chmod +x /usr/bin/hadolint \
+          && hadolint Dockerfile
+  
+  test-app:
+    steps:
+      - run: go test -v -short --count=1 $(go list ./...)
+
+  build-app-karsajobs:
+    steps:
+      - run: docker build -t docker.pkg.github.com/dakur17/a433-microservices/dakur17/karsajobs:latest .
+          docker login docker.pkg.github.com -u $GITHUB_USERNAME -p $GITHUB_TOKEN
+          docker push docker.pkg.github.com/dakur17/a433-microservices/dakur17/karsajobs:latest
