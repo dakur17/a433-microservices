@@ -18,6 +18,8 @@ jobs:
       - run: go test -v -short --count=1 $(go list ./...)
 
   build-app-karsajobs:
+    docker:
+        - image: docker.pkg.github.com/dakur17/a433-microservices/dakur17/karsajobs:latest
     steps:
       - run: |
           docker build -t docker.pkg.github.com/dakur17/a433-microservices/dakur17/karsajobs:latest .
