@@ -29,5 +29,9 @@ workflows:
   lint-test-build-karsajobs:
     jobs:
       - lint-dockerfile
-      - test-app
-      - build-app-karsajobs
+      - test-app:
+          requires:
+            - lint-dockerfile
+      - build-app-karsajobs:
+          requires:
+            - test-app
