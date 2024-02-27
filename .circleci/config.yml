@@ -3,14 +3,11 @@ version: 2.1
 jobs:
   lint-dockerfile:
     docker:
-      - image: docker
+      - image: circleci/buildpack-deps:stretch
     steps:
       - run: |
-          wget -O /tmp/hadolint https://github.com/hadolint/hadolint/releases/latest/download/hadolint-Linux-x86_64 && \
-          chmod +x /tmp/hadolint && \
-          mv /tmp/hadolint /usr/local/bin/hadolint && \
-          cd /
-          ls
+          wget -O /usr/bin/hadolint https://github.com/hadolint/hadolint/releases/download/v2.7.0/hadolint-Linux-x86_64
+          chmod +x /usr/bin/hadolint
           hadolint Dockerfile
   
   test-app:
