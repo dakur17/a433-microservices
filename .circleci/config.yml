@@ -12,7 +12,6 @@ jobs:
           wget -O /tmp/hadolint https://github.com/hadolint/hadolint/releases/latest/download/hadolint-Linux-x86_64 && \
           chmod +x /tmp/hadolint && \
           mv /tmp/hadolint /usr/local/bin/hadolint && \
-          ls -la
           hadolint Dockerfile
   
   test-app:
@@ -33,7 +32,11 @@ jobs:
 workflows:
   lint-test-build-karsajobs:
     jobs:
-      - lint-dockerfile
+      - lint-dockerfile:
+          filters:
+            branches:
+              only:
+                - karsajobs
       - test-app:
           requires:
             - lint-dockerfile
