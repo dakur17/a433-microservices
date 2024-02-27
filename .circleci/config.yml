@@ -9,6 +9,7 @@ jobs:
           password: $GITHUB_TOKEN
     steps:
       - run: |
+          sudo apt install curl
           curl -sL -o /usr/bin/hadolint "https://github.com/hadolint/hadolint/releases/latest/download/hadolint-Linux-x86_64" \
           && chmod +x /usr/bin/hadolint \
           && hadolint Dockerfile
