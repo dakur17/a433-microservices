@@ -7,7 +7,7 @@ jobs:
     steps:
       - run: |
           wget -O /usr/bin/hadolint https://github.com/hadolint/hadolint/releases/download/v2.7.0/hadolint-Linux-x86_64
-          chmod +x /usr/bin/hadolint
+          sudo chmod +x /usr/bin/hadolint
           hadolint Dockerfile
   
   test-app:
