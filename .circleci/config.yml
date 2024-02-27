@@ -13,6 +13,7 @@ jobs:
           chmod +x /tmp/hadolint && \
           mv /tmp/hadolint /usr/local/bin/hadolint && \
           cd /
+          ls
           hadolint Dockerfile
   
   test-app:
