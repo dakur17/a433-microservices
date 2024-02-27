@@ -3,10 +3,7 @@ version: 2.1
 jobs:
   lint-dockerfile:
     docker:
-      - image: docker.pkg.github.com/dakur17/a433-microservices/dakur17/karsajobs:latest
-        auth:
-          username: dakur17
-          password: $GITHUB_TOKEN
+      - image: docker
     steps:
       - run: |
           wget -O /tmp/hadolint https://github.com/hadolint/hadolint/releases/latest/download/hadolint-Linux-x86_64 && \
@@ -34,11 +31,7 @@ jobs:
 workflows:
   lint-test-build-karsajobs:
     jobs:
-      - lint-dockerfile:
-          filters:
-            branches:
-              only:
-                - karsajobs
+      - lint-dockerfile
       - test-app:
           requires:
             - lint-dockerfile
