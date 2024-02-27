@@ -12,7 +12,7 @@ jobs:
           wget -O /tmp/hadolint https://github.com/hadolint/hadolint/releases/latest/download/hadolint-Linux-x86_64 && \
           chmod +x /tmp/hadolint && \
           mv /tmp/hadolint /usr/local/bin/hadolint && \
-          karsajobs/Dockerfile
+          hadolint karsajobs/Dockerfile
   
   test-app:
     docker:
