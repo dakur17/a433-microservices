@@ -3,5 +3,5 @@ WORKDIR /src
 COPY package*.json ./
 RUN npm install
 COPY ./*.js ./
-EXPOSE 8080
+EXPOSE 3000
 CMD ["node", "index.js"]
