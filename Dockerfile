@@ -1,7 +1,6 @@
 FROM node:18-alpine
 WORKDIR /src
-COPY package*.json ./
+COPY . .
 RUN npm install
-COPY ./*.js ./
 EXPOSE 3001
 CMD ["node", "index.js"]
